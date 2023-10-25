@@ -1,5 +1,9 @@
 @extends ('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
 @section('content')
 <div class="container mt-5">
 
@@ -21,7 +25,9 @@
         <td>{{$project->title}}</td>
         <td>{{$project->created_at}}</td>
         <td>{{$project->updated_at}}</td>
-        <td></td>
+        <td>
+          <a href="{{route('admin.projects.show', $project)}}"><i class="fa-solid fa-eye"></i></a>
+        </td>
       </tr> 
       @empty
       <tr>

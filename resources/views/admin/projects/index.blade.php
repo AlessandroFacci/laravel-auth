@@ -8,6 +8,8 @@
 <div class="container mt-5">
 
   <h1 class="mb-4">{{$title}}</h1>
+  <a class="btn btn-outline-success mb-4" href="{{route('admin.projects.create')}}">
+    <i class="fa-solid fa-plus me-2"></i>New project</a>
 
   <table class="table">
     <thead>

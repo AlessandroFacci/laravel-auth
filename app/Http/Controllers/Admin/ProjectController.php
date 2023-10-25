@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 
 class ProjectController extends Controller 
@@ -17,6 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::paginate(12);
+        $projects = Project::orderByDesc('id')->paginate(12);
         $title = "Projects";
         return view('admin.projects.index', compact('projects', 'title'));
     }
@@ -28,7 +30,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create a new project';
+        return view('admin.projects.create', compact('title'));
     }
 
     /**
@@ -37,9 +40,17 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Project  $project)
     {
-        //
+        $data = $request->all();
+        $project = new Project();
+        $project->title = $data['title'];
+        $project->repo = $data['repo'];
+        $project->slug  = Str::slug($project->title);
+        $project->description = $data['description'];
+        $project->save();
+
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**

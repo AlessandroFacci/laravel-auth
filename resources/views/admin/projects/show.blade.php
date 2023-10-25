@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
 @section('content')
+
 <div class="container mt-5">
-  <a class="btn btn-outline-primary" href="{{route('admin.projects.index')}}">Return to list</a>
+  <a class="btn btn-outline-primary" href="{{route('admin.projects.index')}}">
+    <i class="fa-solid fa-arrow-left me-2"></i>Return to list</a>
   <hr>
   <h1>{{$project->title}}</h1>
   <div class="row g-3 mt-3">

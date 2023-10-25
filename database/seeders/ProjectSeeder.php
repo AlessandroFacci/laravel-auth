@@ -25,7 +25,6 @@ class ProjectSeeder extends Seeder
             $project->repo = $faker->url();
             $project->description = $faker->text(50);
             $project->save();
-            
         }
     }
 }

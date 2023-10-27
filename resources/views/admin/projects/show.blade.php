@@ -8,7 +8,11 @@
 
 <div class="container mt-5">
   <a class="btn btn-outline-primary" href="{{route('admin.projects.index')}}">
-    <i class="fa-solid fa-arrow-left me-2"></i>Return to list</a>
+    <i class="fa-solid fa-arrow-left me-2"></i>Return to list
+  </a>
+  <a class="btn btn-outline-primary" href="{{route('admin.projects.edit', $project)}}">
+    <i class="fa-solid fa-pen me-2"></i>Edit 
+  </a>
   <hr>
   <h1>{{$project->title}}</h1>
   <div class="row g-3 mt-3">

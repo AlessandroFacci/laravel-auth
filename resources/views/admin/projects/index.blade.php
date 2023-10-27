@@ -32,6 +32,7 @@
         <td>
           <a href="{{route('admin.projects.show', $project)}}" class="me-2"><i class="fa-solid fa-eye"></i></a>
           <a href="{{route('admin.projects.edit', $project)}}" class="me-2"><i class="fa-solid fa-pen"></i></a>
+          <a href="javascript:void(0)" class="me-2 text-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{$project->id}}"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr> 
       @empty
@@ -46,4 +47,32 @@
 
 </div>
     
+@endsection
+
+@section('modals') 
+  @foreach ($projects as $project)
+    <div class="modal fade" id="delete-project-modal-{{$project->id}}" tabindex="-1" aria-labelledby="delete-project-modal-{{$project->id}}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm deletion</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you want to delete project "{{$project->title}}"?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            <form action="{{route('admin.projects.destroy', $project)}}" method="POST">
+              @method('DELETE')
+              @csrf
+              <button class="btn btn-danger">Delete</button>
+            </form> 
+
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
 @endsection

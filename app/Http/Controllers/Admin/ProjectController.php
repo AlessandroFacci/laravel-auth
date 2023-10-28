@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,9 +41,9 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Project  $project)
+    public function store(StoreProjectRequest $request, Project  $project)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $project = new Project();
         $project->title = $data['title'];
         $project->repo = $data['repo'];

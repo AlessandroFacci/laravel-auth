@@ -30,7 +30,7 @@
     <div class="row g-3 mt-3">
       <div class="col-12">
         <label for="title" class="form-lable mb-1">Title</label>
-        <input type="text" name="title" id="title" class="form-control @error('title')is-invalid @enderror">
+        <input type="text" name="title" id="title" class="form-control @error('title')is-invalid @enderror" value="{{old('title')}}">
         @error('title')
         <div class="invalid-feedback">
           {{$message}}
@@ -40,7 +40,7 @@
 
       <div class="col-12">
         <label for="repo" class="form-lable mb-1">Repo</label>
-        <input type="url" name="repo" id="repo" class="form-control @error('repo')is-invalid @enderror">
+        <input type="url" name="repo" id="repo" class="form-control @error('repo')is-invalid @enderror" value="{{old('title')}}">
         @error('repo')
         <div class="invalid-feedback">
           {{$message}}
@@ -50,7 +50,7 @@
 
       <div class="col-12">
         <label for="description" class="form-lable mb-1">Description</label>
-        <textarea name="description" id="description" class="form-control  @error('description')is-invalid @enderror" rows="6"></textarea>
+        <textarea name="description" id="description" class="form-control  @error('description')is-invalid @enderror" rows="6">{{old('title')}}</textarea>
         @error('description')
         <div class="invalid-feedback">
           {{$message}}
